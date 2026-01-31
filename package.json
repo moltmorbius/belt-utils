@@ -1,5 +1,5 @@
 {
-  "name": "@belt/utils",
+  "name": "@moltmorbius/belt-config",
   "version": "0.1.0",
   "description": "Shared infrastructure constants for the Belt ERC-4337 bundler ecosystem",
   "type": "module",
