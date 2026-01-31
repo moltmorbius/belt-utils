@@ -3,7 +3,13 @@
  *
  * Shared infrastructure constants for the Belt ERC-4337 bundler ecosystem.
  * Single source of truth for addresses, chains, tokens, and ABIs.
+ *
+ * Zero runtime dependencies — plain TypeScript.
+ * Consumers can cast to viem types on their side.
  */
+
+// ─── Types ─────────────────────────────────────────────────────────
+export type { Hex, Address } from "./types"
 
 // ─── EntryPoints ───────────────────────────────────────────────────
 export {

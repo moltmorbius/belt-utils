@@ -1,6 +1,8 @@
-# @moltmorbius/belt-config
+# @belt/utils
 
 Shared infrastructure constants for the [Belt](https://belt.city) ERC-4337 bundler ecosystem.
+
+**Zero dependencies.** Just plain TypeScript string constants and objects. Consuming repos can cast to viem types on their side.
 
 **Single source of truth** for addresses, chains, tokens, and ABIs used across:
 - `belt` — the bundler itself
@@ -11,12 +13,10 @@ Shared infrastructure constants for the [Belt](https://belt.city) ERC-4337 bundl
 ## Install
 
 ```bash
-npm install @moltmorbius/belt-config
+npm install @belt/utils
 # or
-pnpm add @moltmorbius/belt-config
+pnpm add @belt/utils
 ```
-
-> **Peer dependency:** This package requires `viem >= 2.0.0`
 
 ## Usage
 
@@ -30,18 +30,34 @@ import {
   pulsechain,
   BUNDLER_URL,
   ERC20_ABI,
-} from "@moltmorbius/belt-config"
+} from "@belt/utils"
 ```
 
 ### Import specific modules (tree-shakeable)
 
 ```ts
-import { ENTRYPOINTS, getEntryPointVersion } from "@moltmorbius/belt-config/entrypoints"
-import { PAYMASTERS, isBeltPaymaster } from "@moltmorbius/belt-config/paymasters"
-import { TOKENS, USDC } from "@moltmorbius/belt-config/tokens"
-import { pulsechain, explorerTxUrl } from "@moltmorbius/belt-config/chains"
-import { BELT_EXECUTORS, isBeltFactory } from "@moltmorbius/belt-config/wallets"
-import { ERC20_ABI, ROUTER_ABI } from "@moltmorbius/belt-config/abis"
+import { ENTRYPOINTS, getEntryPointVersion } from "@belt/utils/entrypoints"
+import { PAYMASTERS, isBeltPaymaster } from "@belt/utils/paymasters"
+import { TOKENS, USDC } from "@belt/utils/tokens"
+import { pulsechain, explorerTxUrl } from "@belt/utils/chains"
+import { BELT_EXECUTORS, isBeltFactory } from "@belt/utils/wallets"
+import { ERC20_ABI, ROUTER_ABI } from "@belt/utils/abis"
+```
+
+### Using with viem
+
+Addresses use the `Address` type (`` `0x${string}` ``) which is compatible with viem's `Hex`:
+
+```ts
+import { parseAbi } from "viem"
+import type { Hex } from "viem"
+import { ENTRY_POINT_V07, ERC20_ABI } from "@belt/utils"
+
+// Addresses are already typed as `0x${string}` — direct viem compatibility
+const ep: Hex = ENTRY_POINT_V07  // ✅ works
+
+// Parse ABIs on the consuming side
+const erc20Abi = parseAbi(ERC20_ABI)
 ```
 
 ## What's Inside
@@ -68,11 +84,11 @@ PulseChain config with corrected block explorer URL (`https://ipfs.scan.pulsecha
 Operational addresses: executors, utility wallet, deployer, SimpleAccountFactory per version, account implementations. Includes lookup Sets and helper functions.
 
 ### ABIs (`abis`)
-Common ABI definitions using `parseAbi` (human-readable notation): ERC-20, ERC-721, SimpleAccount execute, PulseX router.
+Human-readable ABI string arrays: ERC-20, ERC-721, SimpleAccount execute, PulseX router. Pass to `parseAbi()` on the consuming side.
 
 ## TypeScript
 
-All addresses are typed as viem `Hex`. Chain config extends `viem/chains`. Full type declarations included for both ESM and CJS.
+All addresses use the `Address` type (`` `0x${string}` ``) — compatible with viem's `Hex` without importing it. Full type declarations included for both ESM and CJS.
 
 ## License
 

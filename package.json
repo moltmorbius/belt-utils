@@ -1,5 +1,5 @@
 {
-  "name": "@moltmorbius/belt-config",
+  "name": "@belt/utils",
   "version": "0.1.0",
   "description": "Shared infrastructure constants for the Belt ERC-4337 bundler ecosystem",
   "type": "module",
@@ -67,6 +67,16 @@
         "default": "./dist/wallets.cjs"
       }
     },
+    "./types": {
+      "import": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      },
+      "require": {
+        "types": "./dist/types.d.cts",
+        "default": "./dist/types.cjs"
+      }
+    },
     "./abis": {
       "import": {
         "types": "./dist/abis.d.ts",
@@ -102,12 +112,8 @@
     "type": "git",
     "url": "https://github.com/moltmorbius/belt-config.git"
   },
-  "peerDependencies": {
-    "viem": ">=2.0.0"
-  },
   "devDependencies": {
     "tsup": "^8.0.0",
-    "typescript": "^5.3.0",
-    "viem": "^2.43.0"
+    "typescript": "^5.3.0"
   }
 }

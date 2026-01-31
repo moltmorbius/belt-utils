@@ -3,6 +3,7 @@ import { defineConfig } from "tsup"
 export default defineConfig({
   entry: [
     "src/index.ts",
+    "src/types.ts",
     "src/entrypoints.ts",
     "src/paymasters.ts",
     "src/tokens.ts",
@@ -15,5 +16,4 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   splitting: false,
-  external: ["viem"],
 })

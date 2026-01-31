@@ -1,14 +1,17 @@
 /**
- * Common ABI definitions (parseAbi string notation)
+ * Common ABI definitions (human-readable string notation)
  *
- * All ABIs use human-readable notation via viem's parseAbi.
- * NEVER use raw ABI JSON arrays.
+ * Exported as plain string arrays. Consumers call parseAbi()
+ * on their side (viem, ethers, etc.).
+ *
+ * @example
+ * import { parseAbi } from 'viem'
+ * import { ERC20_ABI } from '@moltmorbius/belt-config/abis'
+ * const abi = parseAbi(ERC20_ABI)
  */
 
-import { parseAbi } from "viem"
-
 // ─── ERC-20 ────────────────────────────────────────────────────────
-export const ERC20_ABI = parseAbi([
+export const ERC20_ABI = [
   "function transfer(address to, uint256 amount) returns (bool)",
   "function transferFrom(address from, address to, uint256 amount) returns (bool)",
   "function balanceOf(address account) view returns (uint256)",
@@ -20,26 +23,26 @@ export const ERC20_ABI = parseAbi([
   "function allowance(address owner, address spender) view returns (uint256)",
   "event Transfer(address indexed from, address indexed to, uint256 value)",
   "event Approval(address indexed owner, address indexed spender, uint256 value)",
-])
+] as const
 
 // ─── ERC-721 ───────────────────────────────────────────────────────
-export const ERC721_ABI = parseAbi([
+export const ERC721_ABI = [
   "function safeTransferFrom(address from, address to, uint256 tokenId)",
   "function ownerOf(uint256 tokenId) view returns (address)",
   "function balanceOf(address owner) view returns (uint256)",
-])
+] as const
 
 // ─── SimpleAccount (execute) ───────────────────────────────────────
-export const EXECUTE_ABI = parseAbi([
+export const EXECUTE_ABI = [
   "function execute(address dest, uint256 value, bytes calldata func)",
-])
+] as const
 
 // ─── Mint (common test contract) ───────────────────────────────────
-export const MINT_ABI = parseAbi(["function mint()"])
+export const MINT_ABI = ["function mint()"] as const
 
 // ─── PulseX Router ─────────────────────────────────────────────────
-export const ROUTER_ABI = parseAbi([
+export const ROUTER_ABI = [
   "function swapExactETHForTokens(uint256 amountOutMin, address[] path, address to, uint256 deadline) payable returns (uint256[] amounts)",
   "function swapExactTokensForETH(uint256 amountIn, uint256 amountOutMin, address[] path, address to, uint256 deadline) returns (uint256[] amounts)",
   "function getAmountsOut(uint256 amountIn, address[] path) view returns (uint256[] amounts)",
-])
+] as const

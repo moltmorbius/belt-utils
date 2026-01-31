@@ -1,11 +1,12 @@
 /**
- * Chain configuration and overrides
+ * Chain configuration
  *
- * Re-exports viem chain definitions with Belt-specific extensions
+ * Plain chain definitions with Belt-specific extensions
  * (e.g., correct PulseChain explorer URLs).
+ * No viem dependency — consumers can cast to viem Chain if needed.
  */
 
-import { pulsechain as viemPulsechain } from "viem/chains"
+import type { Hex } from "./types"
 
 // ─── Explorer URLs ─────────────────────────────────────────────────
 /**
@@ -14,9 +15,21 @@ import { pulsechain as viemPulsechain } from "viem/chains"
  */
 export const PULSECHAIN_EXPLORER = "https://ipfs.scan.pulsechain.com"
 
-// ─── PulseChain (with corrected explorer) ──────────────────────────
+// ─── PulseChain Chain Definition ───────────────────────────────────
 export const pulsechain = {
-  ...viemPulsechain,
+  id: 369,
+  name: "PulseChain",
+  nativeCurrency: {
+    name: "Pulse",
+    symbol: "PLS",
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://rpc.pulsechain.com"],
+      webSocket: ["wss://ws.pulsechain.com"],
+    },
+  },
   blockExplorers: {
     default: {
       name: "PulseScan",
@@ -50,7 +63,5 @@ export const PULSECHAIN_CHAIN_ID = 369
 export const BUNDLER_URL = "https://bundler.pulsechain.belt.city/rpc"
 
 // ─── DEX Addresses ─────────────────────────────────────────────────
-import type { Hex } from "viem"
-
-export const PULSEX_ROUTER =
-  "0x98bf93ebf5c380C0e6Ae8e192A7e2AE08edAcc02" as Hex
+export const PULSEX_ROUTER: Hex =
+  "0x98bf93ebf5c380C0e6Ae8e192A7e2AE08edAcc02"

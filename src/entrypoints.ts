@@ -5,18 +5,18 @@
  * All three versions are supported on PulseChain.
  */
 
-import type { Hex } from "viem"
+import type { Address } from "./types"
 
 // ─── EntryPoint Version Type ───────────────────────────────────────
 export type EntryPointVersion = "0.7" | "0.8" | "0.9"
 
 // ─── Individual EntryPoint Addresses ───────────────────────────────
-export const ENTRY_POINT_V07 =
-  "0x0000000071727De22E5E9d8BAf0edAc6f37da032" as Hex
-export const ENTRY_POINT_V08 =
-  "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108" as Hex
-export const ENTRY_POINT_V09 =
-  "0x433709009B8330FDa32311DF1C2AFA402eD8D009" as Hex
+export const ENTRY_POINT_V07: Address =
+  "0x0000000071727De22E5E9d8BAf0edAc6f37da032"
+export const ENTRY_POINT_V08: Address =
+  "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108"
+export const ENTRY_POINT_V09: Address =
+  "0x433709009B8330FDa32311DF1C2AFA402eD8D009"
 
 // ─── Structured EntryPoint Map ─────────────────────────────────────
 export const ENTRYPOINTS = {
@@ -40,7 +40,7 @@ export const ENTRYPOINTS = {
 // ─── Lookup Maps ───────────────────────────────────────────────────
 
 /** EntryPoint address → version */
-export const ENTRY_POINT_BY_ADDRESS: Record<Hex, EntryPointVersion> = {
+export const ENTRY_POINT_BY_ADDRESS: Record<string, EntryPointVersion> = {
   [ENTRY_POINT_V07]: "0.7",
   [ENTRY_POINT_V08]: "0.8",
   [ENTRY_POINT_V09]: "0.9",
@@ -67,7 +67,7 @@ export function getEntryPointVersion(
 }
 
 /** All supported EntryPoint addresses */
-export const ALL_ENTRY_POINTS: readonly Hex[] = [
+export const ALL_ENTRY_POINTS: readonly Address[] = [
   ENTRY_POINT_V07,
   ENTRY_POINT_V08,
   ENTRY_POINT_V09,

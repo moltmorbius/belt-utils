@@ -5,15 +5,15 @@
  * Currently deployed on PulseChain (chainId 369).
  */
 
-import type { Hex } from "viem"
+import type { Hex } from "./types"
 
 // ─── Paymaster Addresses by EntryPoint Version ────────────────────
-export const PAYMASTER_V07 =
-  "0xA2c244b3e57d2C5809CA21A3a6228Ab4f75b3B67" as Hex
-export const PAYMASTER_V08 =
-  "0xe711362b8F3D5934bcB21572F6b662D3E96FB429" as Hex
-export const PAYMASTER_V09 =
-  "0x82AD51F8D936e07b9DDeb377F9c369a0827b4244" as Hex
+export const PAYMASTER_V07: Hex =
+  "0xA2c244b3e57d2C5809CA21A3a6228Ab4f75b3B67"
+export const PAYMASTER_V08: Hex =
+  "0xe711362b8F3D5934bcB21572F6b662D3E96FB429"
+export const PAYMASTER_V09: Hex =
+  "0x82AD51F8D936e07b9DDeb377F9c369a0827b4244"
 
 // ─── Structured Paymaster Map ──────────────────────────────────────
 export const PAYMASTERS = {
