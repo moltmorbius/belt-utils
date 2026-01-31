@@ -1,5 +1,5 @@
 /**
- * @moltmorbius/belt-config
+ * @belt/utils
  *
  * Shared infrastructure constants for the Belt ERC-4337 bundler ecosystem.
  * Single source of truth for addresses, chains, tokens, and ABIs.

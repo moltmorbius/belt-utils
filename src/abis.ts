@@ -6,7 +6,7 @@
  *
  * @example
  * import { parseAbi } from 'viem'
- * import { ERC20_ABI } from '@moltmorbius/belt-config/abis'
+ * import { ERC20_ABI } from '@belt/utils/abis'
  * const abi = parseAbi(ERC20_ABI)
  */
 
