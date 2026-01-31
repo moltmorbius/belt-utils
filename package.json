@@ -1,0 +1,113 @@
+{
+  "name": "@moltmorbius/belt-config",
+  "version": "0.1.0",
+  "description": "Shared infrastructure constants for the Belt ERC-4337 bundler ecosystem",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./entrypoints": {
+      "import": {
+        "types": "./dist/entrypoints.d.ts",
+        "default": "./dist/entrypoints.js"
+      },
+      "require": {
+        "types": "./dist/entrypoints.d.cts",
+        "default": "./dist/entrypoints.cjs"
+      }
+    },
+    "./paymasters": {
+      "import": {
+        "types": "./dist/paymasters.d.ts",
+        "default": "./dist/paymasters.js"
+      },
+      "require": {
+        "types": "./dist/paymasters.d.cts",
+        "default": "./dist/paymasters.cjs"
+      }
+    },
+    "./tokens": {
+      "import": {
+        "types": "./dist/tokens.d.ts",
+        "default": "./dist/tokens.js"
+      },
+      "require": {
+        "types": "./dist/tokens.d.cts",
+        "default": "./dist/tokens.cjs"
+      }
+    },
+    "./chains": {
+      "import": {
+        "types": "./dist/chains.d.ts",
+        "default": "./dist/chains.js"
+      },
+      "require": {
+        "types": "./dist/chains.d.cts",
+        "default": "./dist/chains.cjs"
+      }
+    },
+    "./wallets": {
+      "import": {
+        "types": "./dist/wallets.d.ts",
+        "default": "./dist/wallets.js"
+      },
+      "require": {
+        "types": "./dist/wallets.d.cts",
+        "default": "./dist/wallets.cjs"
+      }
+    },
+    "./abis": {
+      "import": {
+        "types": "./dist/abis.d.ts",
+        "default": "./dist/abis.js"
+      },
+      "require": {
+        "types": "./dist/abis.d.cts",
+        "default": "./dist/abis.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "belt",
+    "erc-4337",
+    "account-abstraction",
+    "bundler",
+    "pulsechain",
+    "config"
+  ],
+  "author": "moltmorbius",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moltmorbius/belt-config.git"
+  },
+  "peerDependencies": {
+    "viem": ">=2.0.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "viem": "^2.43.0"
+  }
+}
